@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Tarefas</title>
+</head>
+<body>
+
+    <h1>Minha Lista de Tarefas</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Tarefa</th>
+                <th>Status</th>
+                <th>Prazo</th>
+                <th>Alerta</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tarefa in tarefas %}
+            <tr>
+                <td>{{ tarefa.nome }}</td>
+                <td>{{ tarefa.get_status_display }}</td>
+                <td>{{ tarefa.prazo|date:"d/m/Y" }}</td>
+                {%if tarefa.prazo < hoje and tarefa.status != 'concluido' %}
+                <td>
+                <span style="color:red">
+                   Atrasada!
+                </span>
+                {% elif tarefa.status == 'concluido' %}
+                   <span style="color:green">
+                       Concluída
+                   </span>
+                {%endif%}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
