@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class="post-card">
+            <h2><a href="{% url 'post' post.id %}">{{ post.titulo }}</a></h2>
+            <div class="date">Escrito em: {{ post.data }}</div>
+        </div>
+    {% empty %}
+        <p style="text-align: center; color: #666;">O caderno está em branco. Nenhum post foi escrito ainda...</p>
+    {% endfor %}
+{% endblock %}

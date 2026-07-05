@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="full-post">
+        {% if post.imagem %}
+            <img src="{{ post.imagem.url }}" alt="{{ post.titulo }}">
+        {% endif %}
+        <h2>{{ post.titulo }}</h2>
+        <div class="date" style="margin-bottom: 20px;">Data de registro: {{ post.data }}</div>
+        <div class="content">
+            {{ post.conteudo }}
+        </div>
+    </div>
+{% endblock %}
